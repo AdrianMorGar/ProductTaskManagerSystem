@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Gestion.Web.Models.Tarea>
+
+    @{
+    ViewData["Title"] = "Tareas del Producto";
+    }
+
+    <h1>Tareas para: @ViewBag.ProductoNombre</h1>
+
+    <p>
+        <a asp-action="Create" asp-route-productoId="@ViewBag.ProductoId" class="btn btn-primary">Añadir Nueva Tarea</a>
+        <a asp-controller="Productos" asp-action="Index" class="btn btn-secondary">Volver a Productos</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.EstaCompletada)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td>
+                    @if(item.EstaCompletada)
+                {
+                    <span class="badge bg-success">SÍ</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">NO</span>
+                }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm" style="margin-right: 5px;">
+                            Editar
+                        </a>
+
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;" onsubmit="return confirm('¿Borrar esta tarea?');">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Borrar
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+}
+        </tbody>
+    </table>

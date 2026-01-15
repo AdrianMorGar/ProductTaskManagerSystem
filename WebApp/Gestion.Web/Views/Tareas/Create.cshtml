@@ -1,0 +1,21 @@
+﻿@model Gestion.Web.Models.Tarea
+
+<h1>Nueva Tarea</h1>
+
+<form asp-action="Create">
+    <input type="hidden" asp-for="ProductoId" value="@ViewBag.ProductoId" />
+
+    <div class="form-group">
+        <label>Descripción de la tarea</label>
+        <input asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check mt-3">
+        <input asp-for="EstaCompletada" class="form-check-input" />
+        <label class="form-check-label">¿Está completada?</label>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Guardar Tarea</button>
+</form>

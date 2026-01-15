@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Gestion.Web.Models.Producto>
+
+    @{
+    ViewData["Title"] = "Lista de Productos";
+    }
+
+    <h1>Lista de Productos</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear Nuevo Producto</a>
+    </p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                <th>@Html.DisplayNameFor(model => model.Stock)</th>
+                <th>@Html.DisplayNameFor(model => model.Categoria)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@item.Precio.ToString("C")</td>
+                <td>@Html.DisplayFor(modelItem => item.Stock)</td>
+                <td>@Html.DisplayFor(modelItem => item.Categoria)</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-controller="Tareas" asp-action="Index" asp-route-productoId="@item.Id" class="btn btn-info btn-sm" style="margin-right: 5px;">
+                            Gestionar Tareas
+                        </a>
+
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm" style="margin-right: 5px;">
+                            Editar
+                        </a>
+
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este producto? Se borrarán también sus tareas.');">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+}
+        </tbody>
+    </table>
