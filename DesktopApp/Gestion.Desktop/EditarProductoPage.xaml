@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestion.Desktop.EditarProductoPage"
+             Title="Editar Producto"
+             BackgroundColor="#F4F7F9">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <Label Text="FORMULARIO DE EDICIÓN" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   TextColor="#1A202C" 
+                   HorizontalOptions="Center" 
+                   Margin="0,0,0,10"/>
+
+            <Frame BorderColor="#E2E8F0" 
+                   Padding="0" 
+                   BackgroundColor="White" 
+                   HasShadow="True" 
+                   CornerRadius="12">
+
+                <VerticalStackLayout>
+
+                    <VerticalStackLayout Padding="20,15">
+                        <Label Text="NOMBRE DEL PRODUCTO" FontSize="11" FontAttributes="Bold" TextColor="#718096" Margin="0,0,0,5"/>
+                        <Entry x:Name="EntNombre" 
+                               TextColor="Black" 
+                               FontSize="16"
+                               Placeholder="Ej: Portátil Gaming"
+                               BackgroundColor="#F8FAFC"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" Color="#EDF2F7" HorizontalOptions="Fill"/>
+
+                    <VerticalStackLayout Padding="20,15">
+                        <Label Text="CATEGORÍA" FontSize="11" FontAttributes="Bold" TextColor="#718096" Margin="0,0,0,5"/>
+                        <Entry x:Name="EntCategoria" 
+                               TextColor="Black" 
+                               FontSize="16"
+                               Placeholder="Ej: Electrónica"
+                               BackgroundColor="#F8FAFC"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" Color="#EDF2F7" HorizontalOptions="Fill"/>
+
+                    <Grid ColumnDefinitions="*, *" Padding="20,15" ColumnSpacing="20">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="PRECIO (€)" FontSize="11" FontAttributes="Bold" TextColor="#718096" Margin="0,0,0,5"/>
+                            <Entry x:Name="EntPrecio" 
+                                   Keyboard="Numeric" 
+                                   TextColor="#2D3748" 
+                                   FontSize="16"
+                                   BackgroundColor="#F8FAFC"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="STOCK ACTUAL" FontSize="11" FontAttributes="Bold" TextColor="#718096" Margin="0,0,0,5"/>
+                            <Entry x:Name="EntStock" 
+                                   Keyboard="Numeric" 
+                                   TextColor="#2D3748" 
+                                   FontSize="16"
+                                   BackgroundColor="#F8FAFC"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Spacing="10" Margin="0,10,0,0">
+                <Button Text="GUARDAR CAMBIOS" 
+                        Clicked="OnGuardarClicked" 
+                        BackgroundColor="#3182CE" 
+                        TextColor="White" 
+                        FontAttributes="Bold" 
+                        HeightRequest="55"
+                        CornerRadius="8"/>
+
+                <Button Text="CANCELAR" 
+                        Clicked="OnCancelarClicked" 
+                        BackgroundColor="Transparent" 
+                        TextColor="#A0AEC0" 
+                        FontSize="14"
+                        HeightRequest="45"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

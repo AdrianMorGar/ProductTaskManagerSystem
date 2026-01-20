@@ -1,10 +1,16 @@
 using Gestion.Web.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        // Esto evita el error de "Ciclo de objetos" (Producto -> Tarea -> Producto...)
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 // Obtener la cadena de conexión del archivo appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")

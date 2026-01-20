@@ -40,7 +40,7 @@ namespace Gestion.Web.Controllers
             return View(producto);
         }
 
-        // GET: Productos/Edit/5
+        // GET: Productos/Edit/:id
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -51,7 +51,7 @@ namespace Gestion.Web.Controllers
             return View(producto);
         }
 
-        // POST: Productos/Edit/5
+        // POST: Productos/Edit/:id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Producto producto)
@@ -75,7 +75,7 @@ namespace Gestion.Web.Controllers
             return View(producto);
         }
 
-        // POST: Productos/Delete/5
+        // POST: Productos/Delete/:id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

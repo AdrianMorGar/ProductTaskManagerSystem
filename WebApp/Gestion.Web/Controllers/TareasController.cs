@@ -49,7 +49,7 @@ namespace Gestion.Web.Controllers
             return View(tarea);
         }
 
-        // GET: Tareas/Edit/5
+        // GET: Tareas/Edit/:id
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -60,7 +60,7 @@ namespace Gestion.Web.Controllers
             return View(tarea);
         }
 
-        // POST: Tareas/Edit/5
+        // POST: Tareas/Edit/:id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Tarea tarea)
@@ -76,7 +76,7 @@ namespace Gestion.Web.Controllers
             return View(tarea);
         }
 
-        // POST: Tareas/Delete/5
+        // POST: Tareas/Delete/:id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
