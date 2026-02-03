@@ -24,8 +24,8 @@
                 <DataTemplate>
                     <Frame Margin="0,3" Padding="12" BorderColor="#E0E0E0" BackgroundColor="White">
                         <Grid ColumnDefinitions="Auto, *, Auto, Auto" ColumnSpacing="12">
-                            <CheckBox Grid.Column="0" IsChecked="{Binding EstaCompletada}" CheckedChanged="OnTareaCheckedChanged" Color="#28A745"/>
-
+							<CheckBox IsChecked="{Binding EstaCompletada, Mode=TwoWay}" CheckedChanged="OnTareaCheckedChanged" />
+							
                             <Label Grid.Column="1" Text="{Binding Descripcion}" TextColor="#333" VerticalOptions="Center" FontSize="15"/>
 
                             <Button Grid.Column="2" Text="✎" Clicked="OnEditTareaClicked" 

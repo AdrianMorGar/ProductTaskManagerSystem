@@ -1,12 +1,18 @@
 ﻿using System.Net.Http.Json;
 using Gestion.Desktop.Models;
+using static System.Net.WebRequestMethods;
 
 namespace Gestion.Desktop.Services
 {
     public class ApiService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://localhost:7249/";
+        // prueba
+        //  private const string BaseUrl = "https://localhost:7249/";
+        // publica
+        // private const string BaseUrl = "http://localhost:5000/";
+
+        private const string BaseUrl = "http://examenadrian-001-site1.ltempurl.com/";
 
         public ApiService()
         {

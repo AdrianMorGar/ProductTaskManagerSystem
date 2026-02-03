@@ -88,16 +88,21 @@ public partial class DetalleProductoPage : ContentPage
         }
     }
 
-    // MARCAR COMPLETADA
     private async void OnTareaCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        if (((CheckBox)sender).BindingContext is Tarea tarea)
+        // 1. Obtenemos la tarea desde el contexto del CheckBox
+        if (sender is CheckBox cb && cb.BindingContext is Tarea tarea)
         {
-            // Solo actualizamos si el valor ha cambiado realmente
-            if (tarea.EstaCompletada != e.Value)
+            // 2. Forzamos que el objeto tenga el valor del CheckBox
+            tarea.EstaCompletada = e.Value;
+
+            // 3. Llamamos a la API directamente
+            bool exito = await _apiService.ActualizarTareaAsync(tarea);
+
+            if (!exito)
             {
-                tarea.EstaCompletada = e.Value;
-                await _apiService.ActualizarTareaAsync(tarea);
+                // Si falla la conexión o la BD, avisamos para saber qué pasa
+                await DisplayAlert("Error de Almacén", "No se pudo guardar en la base de datos", "OK");
             }
         }
     }
